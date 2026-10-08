@@ -1,0 +1,1469 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>فایت کاپ | فوتبال، لحظه‌به‌لحظه</title>
+
+<style>
+:root{
+ --bg:#090d13;
+ --panel:#111923;
+ --panel2:#17222e;
+ --line:#263544;
+ --text:#f3f6fa;
+ --muted:#9aa9b8;
+ --gold:#e8b84d;
+ --green:#4bd49a;
+ --red:#ff6565
+}
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Tahoma,Arial,sans-serif
+}
+
+button,input{font:inherit}
+button{cursor:pointer}
+
+.top{
+ background:#0d131b;
+ border-bottom:1px solid var(--line);
+ position:sticky;
+ top:0;
+ z-index:5
+}
+
+.wrap{
+ max-width:1200px;
+ margin:auto;
+ padding:0 18px
+}
+
+.nav{
+ height:74px;
+ display:flex;
+ align-items:center;
+ gap:24px
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ font-weight:900;
+ font-size:24px;
+ white-space:nowrap
+}
+
+.logo{
+ width:42px;
+ height:42px;
+ border-radius:13px;
+ background:linear-gradient(145deg,#f6d778,#bb8120);
+ color:#10151c;
+ display:grid;
+ place-items:center;
+ font-weight:1000;
+ font-size:24px;
+ box-shadow:0 0 24px #e8b84d30
+}
+
+.brand small{
+ display:block;
+ color:var(--muted);
+ font-size:10px;
+ font-weight:500;
+ margin-top:3px
+}
+
+.links{
+ display:flex;
+ gap:20px;
+ align-items:center;
+ flex:1
+}
+
+.links a{
+ color:#c6d0db;
+ text-decoration:none;
+ font-size:13px
+}
+
+.links a:hover{color:var(--gold)}
+
+.search{
+ background:#18232f;
+ border:1px solid #293846;
+ color:white;
+ padding:10px 12px;
+ border-radius:10px;
+ width:180px;
+ outline:none
+}
+
+.hero{padding:28px 0 20px}
+
+.hero-box{
+ background:
+ radial-gradient(ellipse at 10% 20%,#1d3a36 0,transparent 42%),
+ linear-gradient(120deg,#151f2a,#101720);
+ border:1px solid var(--line);
+ border-radius:20px;
+ padding:28px;
+ display:grid;
+ grid-template-columns:1.4fr .8fr;
+ gap:24px;
+ overflow:hidden
+}
+
+.eyebrow{
+ color:var(--gold);
+ font-size:12px;
+ font-weight:bold
+}
+
+.hero h1{
+ font-size:clamp(28px,4vw,44px);
+ line-height:1.4;
+ margin:12px 0
+}
+
+.hero p{
+ color:var(--muted);
+ line-height:2;
+ max-width:600px;
+ font-size:14px
+}
+
+.actions{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-top:20px
+}
+
+.btn{
+ border:0;
+ border-radius:10px;
+ padding:12px 18px;
+ font-weight:bold
+}
+
+.primary{
+ background:var(--gold);
+ color:#15191f
+}
+
+.secondary{
+ background:#202c39;
+ color:#e7edf4;
+ border:1px solid #344555
+}
+
+.score-card{
+ align-self:center;
+ background:#0b1118c9;
+ border:1px solid #2c3d4b;
+ border-radius:17px;
+ padding:20px
+}
+
+.score-head{
+ display:flex;
+ justify-content:space-between;
+ color:var(--muted);
+ font-size:12px
+}
+
+.live{
+ color:var(--green);
+ font-weight:bold
+}
+
+.match{
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ text-align:center;
+ padding:20px 0 10px
+}
+
+.team{
+ width:34%;
+ font-size:13px
+}
+
+.crest{
+ width:55px;
+ height:55px;
+ border-radius:50%;
+ background:#1d2b39;
+ border:1px solid #425365;
+ display:grid;
+ place-items:center;
+ font-size:24px;
+ margin:0 auto 8px
+}
+
+.score{
+ font-size:28px;
+ font-weight:900
+}
+
+.score small{
+ font-size:14px;
+ color:var(--muted);
+ padding:0 6px
+}
+
+.match-foot{
+ text-align:center;
+ color:var(--muted);
+ font-size:11px
+}
+
+.section{padding:18px 0}
+
+.section-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:14px
+}
+
+.section h2{
+ font-size:20px;
+ margin:0
+}
+
+.section-head span{
+ color:var(--muted);
+ font-size:12px
+}
+
+.filters{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-bottom:15px
+}
+
+.filter{
+ border:1px solid var(--line);
+ background:#111923;
+ color:#b8c5d2;
+ border-radius:20px;
+ padding:8px 14px;
+ font-size:12px
+}
+
+.filter.active{
+ background:var(--gold);
+ border-color:var(--gold);
+ color:#111
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:1.3fr .7fr;
+ gap:18px
+}
+
+.panel{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:16px;
+ overflow:hidden
+}
+
+.panel-title{
+ padding:16px 18px;
+ border-bottom:1px solid var(--line);
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ font-weight:bold
+}
+
+.panel-title small{
+ color:var(--muted);
+ font-weight:normal
+}
+
+.league{
+ padding:12px 16px;
+ background:#151f2a;
+ color:#d6e0e9;
+ font-size:12px;
+ border-bottom:1px solid var(--line);
+ display:flex;
+ gap:8px;
+ align-items:center
+}
+
+.league b{color:var(--gold)}
+
+.game{
+ padding:14px 16px;
+ display:grid;
+ grid-template-columns:60px 1fr 52px;
+ gap:10px;
+ align-items:center;
+ border-bottom:1px solid #202c38
+}
+
+.time{
+ text-align:center;
+ color:var(--muted);
+ font-size:11px;
+ line-height:1.8
+}
+
+.teams{
+ display:grid;
+ gap:10px;
+ font-size:13px
+}
+
+.teamline{
+ display:flex;
+ align-items:center;
+ gap:8px
+}
+
+.mini{
+ width:22px;
+ height:22px;
+ border-radius:50%;
+ background:#243442;
+ display:grid;
+ place-items:center;
+ font-size:12px
+}
+
+.numbers{
+ text-align:center;
+ font-weight:bold;
+ line-height:1.9
+}
+
+.numbers .live{font-size:10px}
+
+.upcoming{
+ color:var(--muted);
+ font-size:11px;
+ font-weight:normal
+}
+
+.news-list{
+ display:grid;
+ gap:0
+}
+
+.news{
+ padding:15px 16px;
+ border-bottom:1px solid #202c38;
+ display:flex;
+ gap:12px
+}
+
+.news-icon{
+ width:54px;
+ height:54px;
+ flex-shrink:0;
+ border-radius:12px;
+ background:linear-gradient(135deg,#243c43,#1c2835);
+ display:grid;
+ place-items:center;
+ font-size:23px
+}
+
+.news h3{
+ font-size:13px;
+ line-height:1.8;
+ margin:0 0 6px
+}
+
+.news p{
+ font-size:11px;
+ color:var(--muted);
+ line-height:1.8;
+ margin:0
+}
+
+.news time{
+ color:var(--gold);
+ font-size:10px
+}
+
+.standings{
+ width:100%;
+ border-collapse:collapse;
+ font-size:12px
+}
+
+.standings th{
+ color:var(--muted);
+ font-weight:normal;
+ text-align:center;
+ background:#151f2a;
+ padding:12px 5px
+}
+
+.standings td{
+ padding:12px 7px;
+ text-align:center;
+ border-bottom:1px solid #202c38
+}
+
+.standings td:nth-child(2){
+ text-align:right
+}
+
+.pos{
+ color:var(--gold);
+ font-weight:bold
+}
+
+.club{
+ display:inline-flex;
+ align-items:center;
+ gap:7px
+}
+
+.club i{
+ font-style:normal;
+ background:#273746;
+ border-radius:50%;
+ width:22px;
+ height:22px;
+ display:inline-grid;
+ place-items:center
+}
+
+.table-wrap{overflow:auto}
+
+.footer{
+ margin-top:30px;
+ padding:25px 0;
+ border-top:1px solid var(--line);
+ color:var(--muted);
+ font-size:11px;
+ line-height:2
+}
+
+.footer-inner{
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ flex-wrap:wrap
+}
+
+.empty{
+ display:none;
+ text-align:center;
+ padding:28px;
+ color:var(--muted);
+ font-size:13px
+}
+
+.loading{
+ text-align:center;
+ padding:25px;
+ color:var(--muted);
+ font-size:13px
+}
+
+.api-status{
+ padding:10px 15px;
+ border-bottom:1px solid var(--line);
+ font-size:11px;
+ color:var(--muted)
+}
+
+.api-status.online{color:var(--green)}
+.api-status.error{color:var(--red)}
+
+@media(max-width:780px){
+
+ .links{display:none}
+
+ .nav{gap:12px}
+
+ .search{
+  margin-right:auto;
+  width:140px
+ }
+
+ .hero-box{
+  grid-template-columns:1fr;
+  padding:20px
+ }
+
+ .score-card{width:100%}
+
+ .grid{grid-template-columns:1fr}
+
+ .hero h1{font-size:29px}
+
+ .wrap{padding:0 12px}
+
+ .game{
+  grid-template-columns:48px 1fr 44px;
+  padding:12px 10px
+ }
+
+ .brand{font-size:20px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+<div class="wrap nav">
+
+ <div class="brand">
+  <div class="logo">F</div>
+  <div>
+   فایت کاپ
+   <small>فوتبال، لحظه‌به‌لحظه</small>
+  </div>
+ </div>
+
+ <nav class="links">
+  <a href="#games">نتایج و مسابقات</a>
+  <a href="#news">اخبار</a>
+  <a href="#table">جدول لیگ</a>
+  <a href="#about">درباره ما</a>
+ </nav>
+
+ <input
+  class="search"
+  id="search"
+  placeholder="جست‌وجوی تیم..."
+  aria-label="جست‌وجوی تیم"
+ >
+
+</div>
+</header>
+
+
+<main class="wrap">
+
+<section class="hero">
+
+<div class="hero-box">
+
+<div>
+
+ <div class="eyebrow">● خانه فوتبال</div>
+
+ <h1>
+ همه‌چیز درباره فوتبال،
+ <br>
+ در یک قاب.
+ </h1>
+
+ <p>
+ نتایج مسابقات، خبرهای داغ، جدول لیگ‌ها و
+ لحظه‌های مهم فوتبال را در فایت کاپ دنبال کن.
+ </p>
+
+ <div class="actions">
+
+  <a href="#games">
+   <button class="btn primary">
+    مشاهده مسابقات
+   </button>
+  </a>
+
+  <a href="#news">
+   <button class="btn secondary">
+    آخرین خبرها
+   </button>
+  </a>
+
+ </div>
+
+</div>
+
+
+<div class="score-card">
+
+ <div class="score-head">
+  <span>مسابقه منتخب</span>
+  <span class="live" id="featuredStatus">
+   ● نمونه
+  </span>
+ </div>
+
+ <div class="match">
+
+  <div class="team">
+   <div class="crest" id="homeCrest">⚽</div>
+   <span id="homeTeam">تیم میزبان</span>
+  </div>
+
+  <div class="score">
+   <span id="homeScore">-</span>
+   <small>:</small>
+   <span id="awayScore">-</span>
+  </div>
+
+  <div class="team">
+   <div class="crest" id="awayCrest">⚽</div>
+   <span id="awayTeam">تیم مهمان</span>
+  </div>
+
+ </div>
+
+ <div class="match-foot" id="featuredLeague">
+  فایت کاپ · در انتظار API
+ </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="games">
+
+<div class="section-head">
+ <h2>نتایج و مسابقات</h2>
+ <span id="lastUpdate">در انتظار اطلاعات...</span>
+</div>
+
+
+<div class="filters">
+
+ <button class="filter active" data-filter="all">
+  همه مسابقات
+ </button>
+
+ <button class="filter" data-filter="live">
+  در جریان
+ </button>
+
+ <button class="filter" data-filter="done">
+  پایان‌یافته
+ </button>
+
+ <button class="filter" data-filter="next">
+  برنامه مسابقات
+ </button>
+
+</div>
+
+
+<div class="grid">
+
+<div class="panel" id="gamePanel">
+
+ <div class="panel-title">
+  ⚽ مسابقات
+  <small id="gameSource">API</small>
+ </div>
+
+ <div class="api-status" id="apiStatus">
+  در حال دریافت اطلاعات...
+ </div>
+
+ <div id="gamesContainer"></div>
+
+ <div class="empty" id="empty">
+  مسابقه‌ای پیدا نشد.
+ </div>
+
+</div>
+
+
+<div class="panel" id="news">
+
+ <div class="panel-title">
+  📰 آخرین خبرها
+  <small>فایت کاپ</small>
+ </div>
+
+ <div class="news-list">
+
+  <article class="news">
+   <div class="news-icon">🏆</div>
+   <div>
+    <h3>فایت کاپ؛ خانه فوتبال</h3>
+    <p>
+     نتایج و اطلاعات مسابقات را در یک صفحه دنبال کنید.
+    </p>
+    <time>فایت کاپ</time>
+   </div>
+  </article>
+
+  <article class="news">
+   <div class="news-icon">⚽</div>
+   <div>
+    <h3>نتایج مسابقات به‌صورت خودکار بروزرسانی می‌شوند</h3>
+    <p>
+     سیستم دریافت اطلاعات برای اتصال به API آماده است.
+    </p>
+    <time>سیستم</time>
+   </div>
+  </article>
+
+  <article class="news">
+   <div class="news-icon">📣</div>
+   <div>
+    <h3>فایت کاپ</h3>
+    <p>
+     فوتبال، لحظه‌به‌لحظه.
+    </p>
+    <time>FIGHT CUP</time>
+   </div>
+  </article>
+
+ </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="table">
+
+<div class="section-head">
+ <h2>جدول لیگ</h2>
+ <span>اطلاعات لیگ</span>
+</div>
+
+<div class="panel table-wrap">
+
+<table class="standings">
+
+<thead>
+<tr>
+ <th>رتبه</th>
+ <th>تیم</th>
+ <th>بازی</th>
+ <th>برد</th>
+ <th>مساوی</th>
+ <th>باخت</th>
+ <th>امتیاز</th>
+</tr>
+</thead>
+
+<tbody id="standingsBody">
+
+<tr>
+ <td class="pos">۱</td>
+ <td>
+  <span class="club">
+   <i>🔴</i>
+   پرسپولیس
+  </span>
+ </td>
+ <td>۸</td>
+ <td>۶</td>
+ <td>۱</td>
+ <td>۱</td>
+ <td>۱۹</td>
+</tr>
+
+<tr>
+ <td class="pos">۲</td>
+ <td>
+  <span class="club">
+   <i>🔵</i>
+   استقلال
+  </span>
+ </td>
+ <td>۸</td>
+ <td>۵</td>
+ <td>۲</td>
+ <td>۱</td>
+ <td>۱۷</td>
+</tr>
+
+<tr>
+ <td>۳</td>
+ <td>
+  <span class="club">
+   <i>🟡</i>
+   سپاهان
+  </span>
+ </td>
+ <td>۸</td>
+ <td>۴</td>
+ <td>۲</td>
+ <td>۲</td>
+ <td>۱۴</td>
+</tr>
+
+<tr>
+ <td>۴</td>
+ <td>
+  <span class="club">
+   <i>🟢</i>
+   تراکتور
+  </span>
+ </td>
+ <td>۸</td>
+ <td>۳</td>
+ <td>۲</td>
+ <td>۳</td>
+ <td>۱۱</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="footer" id="about">
+
+<div class="wrap footer-inner">
+
+<div>
+ <b style="color:var(--gold)">فایت کاپ</b>
+ <br>
+ فوتبال، لحظه‌به‌لحظه.
+</div>
+
+<div>
+ سیستم نتایج زنده فایت کاپ
+ <br>
+ نسخه متصل به API
+</div>
+
+<div>
+ © فایت کاپ
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   تنظیمات API فایت کاپ
+   ===================================================== */
+
+/*
+   آدرس واقعی API را اینجا قرار بده.
+
+   مثال:
+
+   const API_URL =
+   "https://example.com/api/matches";
+
+*/
+
+const API_URL = "YOUR_API_URL_HERE";
+
+
+/*
+   کلید API را اینجا قرار نده اگر سایت قرار است عمومی باشد.
+
+   کلید gapi_... که داری نباید داخل HTML عمومی قرار بگیرد.
+*/
+
+
+/* =====================================================
+   متغیرهای برنامه
+   ===================================================== */
+
+let matches = [];
+
+let activeFilter = "all";
+
+const gamesContainer =
+ document.getElementById("gamesContainer");
+
+const apiStatus =
+ document.getElementById("apiStatus");
+
+const lastUpdate =
+ document.getElementById("lastUpdate");
+
+const search =
+ document.getElementById("search");
+
+
+/* =====================================================
+   داده نمونه برای زمانی که API هنوز وصل نشده
+   ===================================================== */
+
+const demoMatches = [
+
+ {
+  id:1,
+  league:"لیگ برتر ایران",
+  home:"پرسپولیس",
+  away:"استقلال",
+  homeScore:1,
+  awayScore:0,
+  status:"live",
+  minute:"۶۵'",
+  time:"۲۰:۰۰",
+  homeIcon:"🔴",
+  awayIcon:"🔵"
+ },
+
+ {
+  id:2,
+  league:"لیگ قهرمانان اروپا",
+  home:"رئال مادرید",
+  away:"منچسترسیتی",
+  homeScore:2,
+  awayScore:2,
+  status:"done",
+  minute:"پایان",
+  time:"۱۸:۳۰",
+  homeIcon:"⚪",
+  awayIcon:"🔵"
+ },
+
+ {
+  id:3,
+  league:"لیگ قهرمانان اروپا",
+  home:"بارسلونا",
+  away:"بایرن مونیخ",
+  homeScore:null,
+  awayScore:null,
+  status:"next",
+  minute:"شروع نشده",
+  time:"۲۲:۳۰",
+  homeIcon:"🔴",
+  awayIcon:"🔴"
+ },
+
+ {
+  id:4,
+  league:"لیگ برتر انگلیس",
+  home:"آرسنال",
+  away:"لیورپول",
+  homeScore:null,
+  awayScore:null,
+  status:"next",
+  minute:"شروع نشده",
+  time:"فردا · ۱۹:۰۰",
+  homeIcon:"🔴",
+  awayIcon:"🔴"
+ }
+
+];
+
+
+/* =====================================================
+   تبدیل وضعیت
+   ===================================================== */
+
+function statusText(status){
+
+ if(status === "live")
+  return "زنده";
+
+ if(status === "done")
+  return "پایان";
+
+ if(status === "next")
+  return "برنامه";
+
+ return "";
+}
+
+
+/* =====================================================
+   نمایش مسابقات
+   ===================================================== */
+
+function renderGames(){
+
+ gamesContainer.innerHTML = "";
+
+ const q =
+  search.value.trim().toLowerCase();
+
+ const filtered =
+  matches.filter(match => {
+
+   const statusOk =
+    activeFilter === "all" ||
+    match.status === activeFilter;
+
+   const searchText =
+    (
+     match.home + " " +
+     match.away + " " +
+     match.league
+    ).toLowerCase();
+
+   const searchOk =
+    !q || searchText.includes(q);
+
+   return statusOk && searchOk;
+
+  });
+
+
+ if(filtered.length === 0){
+
+  document.getElementById("empty")
+   .style.display = "block";
+
+  return;
+
+ }
+
+ document.getElementById("empty")
+  .style.display = "none";
+
+
+ let currentLeague = "";
+
+
+ filtered.forEach(match => {
+
+  if(match.league !== currentLeague){
+
+   currentLeague = match.league;
+
+   const league =
+    document.createElement("div");
+
+   league.className = "league";
+
+   league.innerHTML =
+    `<b>●</b> ${match.league}`;
+
+   gamesContainer.appendChild(league);
+
+  }
+
+
+  const game =
+   document.createElement("div");
+
+  game.className = "game";
+
+
+  let score = "";
+
+  if(match.status === "next"){
+
+   score =
+    `<div class="numbers upcoming">
+      شروع نشده
+     </div>`;
+
+  }else{
+
+   score =
+    `<div class="numbers">
+      ${match.homeScore ?? "-"}
+      <br>
+      ${match.awayScore ?? "-"}
+      ${
+       match.status === "live"
+       ? `<span class="live">
+            ${match.minute || "زنده"}
+          </span>`
+       : ""
+      }
+     </div>`;
+
+  }
+
+
+  game.innerHTML = `
+
+   <div class="time">
+    ${match.time || ""}
+    <br>
+    <span class="${match.status === "live" ? "live" : ""}">
+     ${statusText(match.status)}
+    </span>
+   </div>
+
+   <div class="teams">
+
+    <div class="teamline">
+     <span class="mini">
+      ${match.homeIcon || "⚽"}
+     </span>
+     ${match.home}
+    </div>
+
+    <div class="teamline">
+     <span class="mini">
+      ${match.awayIcon || "⚽"}
+     </span>
+     ${match.away}
+    </div>
+
+   </div>
+
+   ${score}
+
+  `;
+
+
+  gamesContainer.appendChild(game);
+
+ });
+
+}
+
+
+/* =====================================================
+   مسابقه منتخب
+   ===================================================== */
+
+function updateFeatured(){
+
+ const live =
+  matches.find(x => x.status === "live");
+
+ const match =
+  live || matches[0];
+
+ if(!match) return;
+
+
+ document.getElementById("homeTeam")
+  .textContent = match.home;
+
+ document.getElementById("awayTeam")
+  .textContent = match.away;
+
+ document.getElementById("homeScore")
+  .textContent =
+   match.homeScore ?? "-";
+
+ document.getElementById("awayScore")
+  .textContent =
+   match.awayScore ?? "-";
+
+ document.getElementById("homeCrest")
+  .textContent =
+   match.homeIcon || "⚽";
+
+ document.getElementById("awayCrest")
+  .textContent =
+   match.awayIcon || "⚽";
+
+ document.getElementById("featuredLeague")
+  .textContent =
+   match.league || "فایت کاپ";
+
+ document.getElementById("featuredStatus")
+  .textContent =
+   match.status === "live"
+   ? "● زنده"
+   : "● " + statusText(match.status);
+
+}
+
+
+/* =====================================================
+   دریافت API
+   ===================================================== */
+
+async function loadAPI(){
+
+ /*
+    اگر هنوز URL واقعی را قرار نداده‌ای،
+    از داده نمونه استفاده می‌کنیم.
+ */
+
+ if(
+  API_URL === "YOUR_API_URL_HERE" ||
+  !API_URL
+ ){
+
+  matches = demoMatches;
+
+  apiStatus.className = "api-status";
+
+  apiStatus.textContent =
+   "حالت نمایشی فعال است؛ API هنوز متصل نشده.";
+
+  document.getElementById("gameSource")
+   .textContent = "داده نمونه";
+
+  lastUpdate.textContent =
+   "داده نمونه";
+
+  renderGames();
+  updateFeatured();
+
+  return;
+ }
+
+
+ try{
+
+  apiStatus.className =
+   "api-status";
+
+  apiStatus.textContent =
+   "در حال دریافت نتایج زنده...";
+
+
+  const response =
+   await fetch(API_URL, {
+    method:"GET",
+    headers:{
+     "Accept":"application/json"
+    }
+   });
+
+
+  if(!response.ok)
+   throw new Error(
+    "HTTP " + response.status
+   );
+
+
+  const data =
+   await response.json();
+
+
+  /*
+    این قسمت باید طبق JSON واقعی API
+    تنظیم شود.
+  */
+
+
+  matches =
+   normalizeAPIData(data);
+
+
+  apiStatus.className =
+   "api-status online";
+
+  apiStatus.textContent =
+   "● اتصال به API برقرار است";
+
+
+  document.getElementById("gameSource")
+   .textContent = "LIVE API";
+
+
+  lastUpdate.textContent =
+   "آخرین بروزرسانی: " +
+   new Date().toLocaleTimeString("fa-IR");
+
+
+  renderGames();
+  updateFeatured();
+
+
+ }catch(error){
+
+  console.error(error);
+
+  /*
+     اگر API خراب باشد، سایت نمی‌خوابد.
+  */
+
+  matches = demoMatches;
+
+  apiStatus.className =
+   "api-status error";
+
+  apiStatus.textContent =
+   "اتصال به API برقرار نشد؛ داده نمونه نمایش داده شد.";
+
+
+  document.getElementById("gameSource")
+   .textContent = "داده نمونه";
+
+
+  lastUpdate.textContent =
+   "خطا در API";
+
+
+  renderGames();
+  updateFeatured();
+
+ }
+
+}
+
+
+/* =====================================================
+   تبدیل JSON API
+   ===================================================== */
+
+function normalizeAPIData(data){
+
+ /*
+   این بخش نمونه است.
+
+   ساختار نهایی مورد انتظار فایت کاپ:
+
+   [
+    {
+     id: 1,
+     league: "Premier League",
+     home: "Arsenal",
+     away: "Liverpool",
+     homeScore: 1,
+     awayScore: 0,
+     status: "live",
+     minute: "65'",
+     time: "20:00",
+     homeIcon: "🔴",
+     awayIcon: "🔴"
+    }
+   ]
+
+   وقتی JSON واقعی API را داشته باشیم،
+   این قسمت را دقیقاً با API خودت هماهنگ می‌کنیم.
+ */
+
+
+ if(Array.isArray(data))
+  return data;
+
+
+ if(Array.isArray(data.matches))
+  return data.matches.map(item => ({
+   id:item.id,
+   league:
+    item.league ||
+    item.competition ||
+    "فوتبال",
+
+   home:
+    item.home ||
+    item.homeTeam ||
+    item.teams?.home?.name ||
+    "میزبان",
+
+   away:
+    item.away ||
+    item.awayTeam ||
+    item.teams?.away?.name ||
+    "مهمان",
+
+   homeScore:
+    item.homeScore ??
+    item.score?.home ??
+    item.goals?.home ??
+    null,
+
+   awayScore:
+    item.awayScore ??
+    item.score?.away ??
+    item.goals?.away ??
+    null,
+
+   status:
+    item.status === "live"
+    ? "live"
+    : item.status === "finished"
+    ? "done"
+    : "next",
+
+   minute:
+    item.minute ||
+    item.elapsed ||
+    "",
+
+   time:
+    item.time ||
+    item.startTime ||
+    "",
+
+   homeIcon:
+    item.homeIcon ||
+    "⚽",
+
+   awayIcon:
+    item.awayIcon ||
+    "⚽"
+  }));
+
+
+ return [];
+
+}
+
+
+/* =====================================================
+   فیلترها
+   ===================================================== */
+
+document
+ .querySelectorAll("[data-filter]")
+ .forEach(button => {
+
+  button.addEventListener("click", () => {
+
+   document
+    .querySelectorAll("[data-filter]")
+    .forEach(x =>
+     x.classList.remove("active")
+    );
+
+   button.classList.add("active");
+
+   activeFilter =
+    button.dataset.filter;
+
+   renderGames();
+
+  });
+
+ });
+
+
+/* =====================================================
+   جست‌وجو
+   ===================================================== */
+
+search.addEventListener(
+ "input",
+ renderGames
+);
+
+
+/* =====================================================
+   اجرای اولیه
+   ===================================================== */
+
+loadAPI();
+
+
+/* =====================================================
+   بروزرسانی خودکار
+   هر ۳۰ ثانیه
+   ===================================================== */
+
+setInterval(() => {
+
+ loadAPI();
+
+}, 30000);
+
+</script>
+
+</body>
+</html>
